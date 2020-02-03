@@ -43,8 +43,6 @@ namespace Security_National_Challenge
         public static Dictionary<string, double> _MedianTaxes = new Dictionary<string, double>();
 
 
-
-
         static void Main(string[] args)
         {
             Console.WriteLine("Thank you for the opportunity to interview with you!");
@@ -55,12 +53,20 @@ namespace Security_National_Challenge
             Console.WriteLine("Reading in Employees.txt from " + filepath);
             ReadEmployeeFile(filepath);
 
-            Console.WriteLine("Finished Reading text file.");
+            Console.WriteLine("Beginning to write results files...");
             WritePayChecksFile();
             WriteHighestEarnersFile();
 
             States_List.Sort();
             WriteStateStatsFile();
+
+            Console.WriteLine("Finished writing results.");
+
+            Console.Write("Test 'GetEmployeeById()' -- Enter an Employee ID:");
+            string employeeId = Console.ReadLine();
+
+            Console.WriteLine(GetEmployeeById(employeeId).ToString());
+            
         }
         /*
          * Calculate pay checks for every line in the text file.
@@ -406,7 +412,7 @@ namespace Security_National_Challenge
             }
         }
 
-        private Employee GetEmployeeById(string employeeId)
+        private static Employee GetEmployeeById(string employeeId)
         {
             Employee requestedEmployee = null;
             for(int i = 0; i < _Employees.Count; i++)

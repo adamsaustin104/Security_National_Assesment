@@ -125,9 +125,21 @@ namespace Security_National_Challenge
         }
         public DateTime GetStartDate() { return start_date; }
 
-        public string GetEmployeeInfo()
+        public override string ToString()
         {
-            return "TODO";
+            return String.Format("" +
+                "ID:           {0}\n" +
+                "Name:         {1}\n" +
+                "Pay:          {2}\n" +
+                "Start Date:   {3}\n" +
+                "State:        {4}\n" +
+                "Hours Worked: {5}\n",
+                employee_id,
+                first_name + " " + last_name,
+                pay_rate,
+                start_date.ToShortDateString(),
+                state_code,
+                hours_worked);
         }
 
         public void SetGrossPay(double g_pay) { gross_pay = g_pay; }
